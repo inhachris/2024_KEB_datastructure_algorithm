@@ -1,9 +1,22 @@
-import mymath
-import time
+import random
 
-if __name__ == "__main__":
-    n = int(input("Input n : "))
-    r = int(input("Input r : "))
-    print(f"{n}C{r} = {mymath.nCr(n, r)}")
-    # f = int(input())
-    # print(mymath.factorial(f))
+number = random.randint(1,100)
+cnt = 0
+chance = 7
+
+while(chance != 0):
+    a = int(input("Guess the number : "))
+    cnt = cnt + 1
+    if a < number:
+        print("Try bigger\n")
+        chance -= 1
+    elif a > number:
+        print("Try smaller\n")
+        chance -= 1
+    elif a == number:
+        print("You are right!")
+        print(f"You tried {cnt} times")
+        break
+
+else:
+    print(f"You lost. Answer is {number}")
