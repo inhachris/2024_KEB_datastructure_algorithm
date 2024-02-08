@@ -1,22 +1,34 @@
-import random
+def print_poly(f_x) -> str:
+    term = len(f_x) - 1
+    poly_expression = "f(x) = "
 
-number = random.randint(1,100)
-cnt = 0
-chance = 7
+    for i in range(len(fx)):
+        coefficient = f_x[i]
 
-while(chance != 0):
-    a = int(input("Guess the number : "))
-    cnt = cnt + 1
-    if a < number:
-        print("Try bigger\n")
-        chance -= 1
-    elif a > number:
-        print("Try smaller\n")
-        chance -= 1
-    elif a == number:
-        print("You are right!")
-        print(f"You tried {cnt} times")
-        break
+        if coefficient >= 0:
+            poly_expression += "+"
+        poly_expression += f'{coefficient}x^{term} '
+        term -= 1
 
-else:
-    print(f"You lost. Answer is {number}")
+    return poly_expression
+
+
+def calculation_poly(x_value, f_x) -> int:
+    return_value = 0
+    term = len(f_x) - 1
+
+    for i in range(len(fx)):
+        coefficient = f_x[i]
+        return_value += coefficient * pow(x_value, term)
+        term -= 1
+
+    return return_value
+
+
+fx = [2, 3, 4, 0, -9]
+
+if __name__ == "__main__":
+    print(print_poly(fx))
+    print(calculation_poly(int(input("X 값-->")), fx))
+
+
