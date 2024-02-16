@@ -1,39 +1,37 @@
-# Assignment 2.1
+# Assignment 2.2
 
-def find_and_insert_data(friend, k_count) :
-    find_pos = -1
-    for i in range(len(katok)):
-        pair = katok[i]
-        if k_count >= pair[1]:
-            find_pos = i
-            break
-    if find_pos == -1:
-        find_pos = len(katok)
+def print_poly(x_):
+    poly_str = "P(x) = "
 
-    insert_data(find_pos, (friend, k_count))
+    for i in range(len(x_[0])):
+        term = x_[0][i]
+        coef = x[1][i]
 
+        if (coef >= 0):
+            poly_str += "+"
+        poly_str += str(coef) + "x^" + str(term) + " "
 
-def insert_data(position, friend):
-    if position < 0 or position > len(katok):
-        print("데이터를 삽입할 범위를 벗어났습니다.")
-        return
-
-    katok.append(None)
-    k_len = len(katok)
-
-    for i in range(k_len - 1, position, -1):
-        katok[i] = katok[i-1]
-        katok[i-1] = None
-
-    katok[position] = friend
+    return poly_str
 
 
-katok = [('다현', 200), ('정연', 150), ('쯔위', 90), ('사나', 30), ('지효', 15)]
+def calc_poly(x_val, x_):
+    ret_value = 0
+
+    for i in range(len(x_[0])):
+        term = x_[0][i]
+        coef = x_[1][i]
+        ret_value += coef * x_value ** term
+
+    return ret_value
+
+x = [[300, 20, 0],
+     [7, -4, 5]]
 
 if __name__ == "__main__":
+    p_str = print_poly(x)
+    print(p_str)
 
-    while True:
-        data = input("추가할 친구--> ")
-        count = int(input("카톡 횟수--> "))
-        find_and_insert_data(data, count)
-        print(f"{katok}\n")
+    x_value = int(input("X 값-->"))
+
+    px_value = calc_poly(x_value, x)
+    print(px_value)
